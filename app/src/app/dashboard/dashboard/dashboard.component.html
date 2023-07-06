@@ -1,0 +1,24 @@
+<mat-tab-group (selectedTabChange)="onTabChanged($event)">
+    <mat-tab label="Department">
+        <div class="row">
+            <div class="col-md-12">
+                <app-department></app-department>
+            </div>
+        </div>
+    </mat-tab>
+    
+    <mat-tab label="Employee" >
+        <div class="row">
+            <div class="col-md-12" *ngIf="tabChange === 'Employee'">
+                <app-employee></app-employee>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Mail" >
+        <div class="row">
+            <div class="col-md-12" *ngIf="tabChange === 'Mail'">
+                <app-email></app-email>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

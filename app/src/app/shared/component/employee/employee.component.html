@@ -1,0 +1,58 @@
+<div class="row mt-2">
+    <div class="col-md-12" *ngFor="let department of employeeList;">
+      <div class="alert alert-primary">{{department.name}} - {{department.isActive == 1 ? 'Active' : 'Inactive'}}</div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Salary Breakup</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of department.employeeCollection; let i = index;">
+            <ng-container *ngIf="isDashboard && employee.isActive == 1">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.mobile}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.address}}</td>
+            <td>{{employee.city}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.salaryCollection[0]?.salary}}</td>
+            <td><app-employee-salary-structure
+                [salary]="employee.salaryCollection[0]?.salary"></app-employee-salary-structure></td>
+            <td>{{employee.isActive == 1 ? 'Active' : 'Inactive'}}</td>
+          </ng-container>
+          <tr *ngFor="let employee of department.employeeCollection; let i = index;">
+            <ng-container *ngIf="!isDashboard">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.mobile}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.address}}</td>
+            <td>{{employee.city}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.salaryCollection[0]?.salary}}</td>
+            <td><app-employee-salary-structure
+                [salary]="employee.salaryCollection[0]?.salary"></app-employee-salary-structure></td>
+            <td>{{employee.isActive == 1 ? 'Active' : 'Inactive'}}</td>
+          </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

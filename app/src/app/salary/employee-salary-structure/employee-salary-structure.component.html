@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Components</th>
+            <th scope="col">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let component of salaryBreakup;">
+            <td>{{component.name}}</td>
+            <ng-container *ngIf="component.name==='HRA'">
+            <td>{{ (salary * (component.percentage /100 )).toFixed(2)}}</td>
+        </ng-container>
+        <ng-container *ngIf="component.name!=='HRA'">
+            <td>{{ salary * (component.percentage /100 )}}</td>
+        </ng-container>
+        </tr>
+    </tbody>
+</table>
